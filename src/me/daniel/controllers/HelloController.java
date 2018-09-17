@@ -17,17 +17,28 @@ public class HelloController {
 	
 	@RequestMapping(path = "/{name}", method = RequestMethod.GET)
 	public String helloName(@PathVariable String name, ModelMap model) {
-		StringBuilder builder = new StringBuilder(name.toLowerCase());
-		builder.setCharAt(0, Character.toUpperCase(builder.charAt(0)));
-		name = builder.toString();
+		name = prepareName(name);
 		model.addAttribute("greetings", "Witaj " + name + "!");
 		return "hello";
 	}
-	
-	@RequestMapping(path = "/bye", method = RequestMethod.GET)
-	public String bye(ModelMap model) {
-		model.addAttribute("greetings", "Żegnaj drogi kliencie!");
-		return "hello";
+
+	private String prepareName(String name) {
+		//TODO Dodać obsługę nazwisk
+		name = removeNotLettersFrom(name);
+		StringBuilder builder = new StringBuilder(name.toLowerCase());
+		builder.setCharAt(0, Character.toUpperCase(builder.charAt(0)));
+		return builder.toString();
+	}
+
+	private String removeNotLettersFrom(String name) {
+		StringBuilder builder = new StringBuilder(name);
+		for(int i = 0; i < builder.length(); i++) {
+			if (!Character.isLetter(builder.charAt(i))) {
+				builder = builder.deleteCharAt(i);
+				i--;
+			}
+		}
+		return builder.toString();
 	}
 	
 }
