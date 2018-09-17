@@ -24,4 +24,10 @@ public class HelloController {
 		return "hello";
 	}
 	
+	@RequestMapping(path = "/bye", method = RequestMethod.GET)
+	public String bye(ModelMap model) {
+		model.addAttribute("greetings", "Żegnaj drogi kliencie!");
+		return "hello";
+	}
+	
 }
