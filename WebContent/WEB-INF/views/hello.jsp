@@ -13,6 +13,8 @@
 	</style>
 </head>
 <body>
-
+	<div class="main">
+		<h2 align="center">${greetings}</h2>
+	</div>
 </body>
 </html>
