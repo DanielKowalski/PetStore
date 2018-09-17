@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HelloController {
-
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String hello(ModelMap model) {
 		model.addAttribute("greetings", "Witaj drogi kliencie!");
@@ -17,8 +17,19 @@ public class HelloController {
 	
 	@RequestMapping(path = "/{name}", method = RequestMethod.GET)
 	public String helloName(@PathVariable String name, ModelMap model) {
-		name = prepareName(name);
-		model.addAttribute("greetings", "Witaj " + name + "!");
+		model.addAttribute("greetings", "Witaj " + prepareName(name) + "!");
+		return "hello";
+	}
+	
+	@RequestMapping(path = "/bye", method = RequestMethod.GET)
+	public String bye(ModelMap model) {
+		model.addAttribute("greetings", "Żegnaj drogi kliencie!");
+		return "hello";
+	}
+	
+	@RequestMapping(path = "/bye:{name}", method = RequestMethod.GET)
+	public String byeName(@PathVariable String name, ModelMap model) {
+		model.addAttribute("greetings", "Żegnaj " + prepareName(name) + "!");
 		return "hello";
 	}
 
