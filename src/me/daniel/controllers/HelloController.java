@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HelloController {
 	
+	//TODO add finals and change methods' names
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String hello(ModelMap model) {
 		model.addAttribute("greetings", "Witaj drogi kliencie!");
