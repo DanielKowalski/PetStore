@@ -1,5 +1,7 @@
 package me.daniel.tests;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +18,9 @@ public class StringChangerTest {
 	
 	@Test
 	void testRemoveNotLettersFromString() {
-		
+		assertEquals("ala", stringChanger.removeNotLettersFrom("ala"));
+		assertEquals("ala", stringChanger.removeNotLettersFrom("a!l%%a"));
+		assertEquals("ala", stringChanger.removeNotLettersFrom("'a!@#la;!@@"));
 	}
 
 }
