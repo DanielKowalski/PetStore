@@ -35,7 +35,7 @@ public class HelloController {
 		return "hello";
 	}
 
-	private String prepareName(String name) {
+	String prepareName(String name) {
 		//TODO Dodać obsługę nazwisk
 		name = removeNotLettersFrom(name);
 		StringBuilder builder = new StringBuilder(name.toLowerCase());
@@ -43,7 +43,7 @@ public class HelloController {
 		return builder.toString();
 	}
 
-	private String removeNotLettersFrom(String name) {
+	String removeNotLettersFrom(String name) {
 		StringBuilder builder = new StringBuilder(name);
 		for(int i = 0; i < builder.length(); i++) {
 			if (!Character.isLetter(builder.charAt(i))) {
