@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import me.daniel.services.PrepareName;
+import me.daniel.services.StringChanger;
 
 @Controller
 public class HelloController {
@@ -15,7 +15,7 @@ public class HelloController {
 	//TODO add finals and change methods' names
 	
 	@Autowired
-	private PrepareName namePreparation;
+	private StringChanger nameChanger;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String hello(ModelMap model) {
@@ -25,7 +25,7 @@ public class HelloController {
 	
 	@RequestMapping(path = "/{name}", method = RequestMethod.GET)
 	public String helloName(@PathVariable String name, ModelMap model) {
-		model.addAttribute("greetings", "Witaj " + namePreparation.prepareName(name) + "!");
+		model.addAttribute("greetings", "Witaj " + nameChanger.prepareName(name) + "!");
 		return "hello";
 	}
 	
@@ -37,7 +37,7 @@ public class HelloController {
 	
 	@RequestMapping(path = "/bye:{name}", method = RequestMethod.GET)
 	public String byeName(@PathVariable String name, ModelMap model) {
-		model.addAttribute("greetings", "Żegnaj " + namePreparation.prepareName(name) + "!");
+		model.addAttribute("greetings", "Żegnaj " + nameChanger.prepareName(name) + "!");
 		return "hello";
 	}
 	

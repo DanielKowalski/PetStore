@@ -3,7 +3,7 @@ package me.daniel.services;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PrepareName {
+public class StringChanger {
 	
 	public String prepareName(String name) {
 		//TODO Dodać obsługę nazwisk
