@@ -1,15 +1,21 @@
 package me.daniel.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import me.daniel.services.PrepareName;
+
 @Controller
 public class HelloController {
 	
 	//TODO add finals and change methods' names
+	
+	@Autowired
+	private PrepareName namePreparation;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String hello(ModelMap model) {
@@ -19,7 +25,7 @@ public class HelloController {
 	
 	@RequestMapping(path = "/{name}", method = RequestMethod.GET)
 	public String helloName(@PathVariable String name, ModelMap model) {
-		model.addAttribute("greetings", "Witaj " + prepareName(name) + "!");
+		model.addAttribute("greetings", "Witaj " + namePreparation.prepareName(name) + "!");
 		return "hello";
 	}
 	
@@ -31,27 +37,8 @@ public class HelloController {
 	
 	@RequestMapping(path = "/bye:{name}", method = RequestMethod.GET)
 	public String byeName(@PathVariable String name, ModelMap model) {
-		model.addAttribute("greetings", "Żegnaj " + prepareName(name) + "!");
+		model.addAttribute("greetings", "Żegnaj " + namePreparation.prepareName(name) + "!");
 		return "hello";
-	}
-
-	String prepareName(String name) {
-		//TODO Dodać obsługę nazwisk
-		name = removeNotLettersFrom(name);
-		StringBuilder builder = new StringBuilder(name.toLowerCase());
-		builder.setCharAt(0, Character.toUpperCase(builder.charAt(0)));
-		return builder.toString();
-	}
-
-	String removeNotLettersFrom(String name) {
-		StringBuilder builder = new StringBuilder(name);
-		for(int i = 0; i < builder.length(); i++) {
-			if (!Character.isLetter(builder.charAt(i))) {
-				builder = builder.deleteCharAt(i);
-				i--;
-			}
-		}
-		return builder.toString();
 	}
 	
 }
