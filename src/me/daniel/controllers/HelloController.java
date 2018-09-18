@@ -12,8 +12,6 @@ import me.daniel.services.StringChanger;
 @Controller
 public class HelloController {
 	
-	//TODO add finals and change methods' names
-	
 	@Autowired
 	private StringChanger nameChanger;
 	

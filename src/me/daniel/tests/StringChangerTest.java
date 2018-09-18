@@ -11,6 +11,10 @@ public class StringChangerTest {
 	
 	private static StringChanger stringChanger;
 	
+	/*
+	 * TODO Dodać resztę testów
+	 */
+	
 	@BeforeAll
 	static void prepareVariable() {
 		stringChanger = new StringChanger();
@@ -18,6 +22,9 @@ public class StringChangerTest {
 	
 	@Test
 	void testRemoveNotLettersFromString() {
+		/*
+		 * TODO Dodaj więcej przypadków do sprawdzenia
+		 */
 		assertEquals("ala", stringChanger.removeNotLettersFrom("ala"));
 		assertEquals("ala", stringChanger.removeNotLettersFrom("a!l%%a"));
 		assertEquals("ala", stringChanger.removeNotLettersFrom("'a!@#la;!@@"));
