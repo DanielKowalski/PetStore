@@ -22,12 +22,12 @@ public class StringChangerTest {
 	
 	@Test
 	void testRemoveNotLettersFromString() {
-		/*
-		 * TODO Dodaj więcej przypadków do sprawdzenia
-		 */
 		assertEquals("ala", stringChanger.removeNotLettersFrom("ala"));
-		assertEquals("ala", stringChanger.removeNotLettersFrom("a!l%%a"));
+		assertEquals("ala", stringChanger.removeNotLettersFrom("a!l%%a123"));
 		assertEquals("ala", stringChanger.removeNotLettersFrom("'a!@#la;!@@"));
+		assertEquals("ala", stringChanger.removeNotLettersFrom("a3/21123214l12312a"));
+		assertEquals("Ala", stringChanger.removeNotLettersFrom("Al--=-3234a12"));
+		assertEquals("Ala", stringChanger.removeNotLettersFrom("Al234234a234234:::12312"));
 	}
 
 }
