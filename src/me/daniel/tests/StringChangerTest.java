@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import me.daniel.services.StringChanger;
 
 public class StringChangerTest {
-	
 	private static StringChanger stringChanger;
 	
 	/*
@@ -29,5 +28,13 @@ public class StringChangerTest {
 		assertEquals("Ala", stringChanger.removeNotLettersFrom("Al--=-3234a12"));
 		assertEquals("Ala", stringChanger.removeNotLettersFrom("Al234234a234234:::12312"));
 	}
-
+	
+	@Test
+	void testCapitalizing() {
+		assertEquals("Ala", stringChanger.capitalize("ala"));
+		assertEquals("Bartek", stringChanger.capitalize("bartek"));
+		assertEquals("Daniel", stringChanger.capitalize("danieL"));
+		assertEquals("K", stringChanger.capitalize("k"));
+		assertEquals("Kamil", stringChanger.capitalize("kAmIl"));
+	}
 }
