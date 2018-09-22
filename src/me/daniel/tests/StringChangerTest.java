@@ -30,11 +30,17 @@ public class StringChangerTest {
 	}
 	
 	@Test
-	void testCapitalizing() {
+	void testCapitalize() {
 		assertEquals("Ala", stringChanger.capitalize("ala"));
 		assertEquals("Bartek", stringChanger.capitalize("bartek"));
 		assertEquals("Daniel", stringChanger.capitalize("danieL"));
 		assertEquals("K", stringChanger.capitalize("k"));
 		assertEquals("Kamil", stringChanger.capitalize("kAmIl"));
+	}
+	
+	@Test
+	void testPrepareName() {
+		assertEquals("Ala", stringChanger.prepareName("a&L12A"));
+		assertEquals("Daniel", stringChanger.prepareName("dAN232{{{/iEl"));
 	}
 }
