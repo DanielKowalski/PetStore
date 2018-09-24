@@ -4,17 +4,18 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Andrew's PetStore</title>
+	<title>Andrew's PetStore- strona powitalna</title>
 	<style>
 		.main {
 			background-color: yellow;
-			border: 2px solid green; 
+			border: 2px solid green;
+			text-align: center;
 		}
 	</style>
 </head>
 <body>
 	<div class="main">
-		<h2 align="center">${greetings}</h2>
+		<h2>${greetings}</h2>
 	</div>
 </body>
 </html>
