@@ -9,6 +9,7 @@ public class Animal {
 	@Size(min = 2, max = 30)
 	private String name;
 	
+	@NotNull
 	private Long id;
 	
 	@NotNull
@@ -17,7 +18,8 @@ public class Animal {
 
 	@Override
 	public String toString() {
-		return "Animal [name=" + name + ", id=" + id + ", sound=" + sound + "]";
+		return "Animal [name=" + name + ", id=" + id + 
+				", sound=" + sound + "]";
 	}
 	
 	/*

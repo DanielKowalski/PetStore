@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Andrew's PetStore- błąd</title>
 </head>
 <body>
 	<font color="red"><b>Wystąpił błąd!</b></font>

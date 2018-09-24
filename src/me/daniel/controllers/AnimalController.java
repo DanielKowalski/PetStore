@@ -22,10 +22,17 @@ public class AnimalController {
 	}
 	
 	@PostMapping("/newAnimal")
-	public String newAnimal(@Valid @ModelAttribute("animal")Animal animal, BindingResult result, ModelMap model) {
+	public String newAnimal(@Valid @ModelAttribute("animal")
+		Animal animal, BindingResult result, ModelMap model) {
 		if(result.hasErrors()) {
+			
 			return "error";
 		}
+		model.addAttribute("title", 
+				"Nowe zwierze zostało dodane pomyślnie!");
+		model.addAttribute("name", animal.getName());
+		model.addAttribute("sound", animal.getSound());
+		model.addAttribute("id", animal.getId());
 		return "newAnimal";
 	}
 }
