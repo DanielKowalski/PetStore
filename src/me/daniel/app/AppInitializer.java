@@ -22,5 +22,4 @@ public class AppInitializer implements WebApplicationInitializer {
 		registration.addMapping("/");
 		registration.setLoadOnStartup(1);
 	}
-
 }

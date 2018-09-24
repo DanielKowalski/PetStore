@@ -11,32 +11,30 @@ import me.daniel.services.StringChanger;
 
 @Controller
 public class HelloController {
-	
 	@Autowired
 	private StringChanger nameChanger;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String hello(ModelMap model) {
 		model.addAttribute("greetings", "Witaj drogi kliencie!");
-		return "hello";
+		return "helloView";
 	}
 	
 	@RequestMapping(path = "/{name}", method = RequestMethod.GET)
 	public String helloName(@PathVariable String name, ModelMap model) {
 		model.addAttribute("greetings", "Witaj " + nameChanger.prepareName(name) + "!");
-		return "hello";
+		return "helloView";
 	}
 	
 	@RequestMapping(path = "/bye", method = RequestMethod.GET)
 	public String bye(ModelMap model) {
 		model.addAttribute("greetings", "Żegnaj drogi kliencie!");
-		return "hello";
+		return "helloView";
 	}
 	
 	@RequestMapping(path = "/bye:{name}", method = RequestMethod.GET)
 	public String byeName(@PathVariable String name, ModelMap model) {
 		model.addAttribute("greetings", "Żegnaj " + nameChanger.prepareName(name) + "!");
-		return "hello";
+		return "helloView";
 	}
-	
 }

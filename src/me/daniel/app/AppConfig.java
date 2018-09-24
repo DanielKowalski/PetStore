@@ -23,5 +23,4 @@ public class AppConfig implements WebMvcConfigurer {
 		resolver.setViewClass(JstlView.class);
 		return resolver;
 	}
-	
 }
