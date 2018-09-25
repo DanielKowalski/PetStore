@@ -13,7 +13,7 @@
 		}
 	</style>
 </head>
-<body>
+<body style="background-color: #FFA">
 	<div class="main">
 		<h2>${greetings}</h2>
 	</div>

@@ -15,7 +15,7 @@
 		}
 	</style>
 </head>
-<body style="background-color: #DDD">
+<body style="background-color: #AAF">
 	<div class="main">
 		<h2>${title}</h2>
 	</div>
