@@ -21,7 +21,8 @@ public class HelloController {
 	
 	@GetMapping("/{name}")
 	public String helloName(@PathVariable String name, ModelMap model) {
-		model.addAttribute("greetings", "Witaj " + nameChanger.prepareName(name) + "!");
+		model.addAttribute("greetings", "Witaj " + nameChanger.prepareName(name)
+			+ "!");
 		return "hello";
 	}
 	
@@ -33,7 +34,8 @@ public class HelloController {
 	
 	@GetMapping("/bye:{name}")
 	public String byeName(@PathVariable String name, ModelMap model) {
-		model.addAttribute("greetings", "Żegnaj " + nameChanger.prepareName(name) + "!");
+		model.addAttribute("greetings", "Żegnaj "
+			+ nameChanger.prepareName(name) + "!");
 		return "hello";
 	}
 }

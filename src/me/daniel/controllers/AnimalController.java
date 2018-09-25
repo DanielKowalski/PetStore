@@ -25,24 +25,20 @@ public class AnimalController {
 	}
 	
 	@PostMapping("/newAnimal")
-	public String newAnimal(@Valid @ModelAttribute("animal")
-		Animal animal, BindingResult result, ModelMap model) {
+	public String newAnimal(@Valid @ModelAttribute("animal") Animal animal, 
+			BindingResult result, ModelMap model) {
 		if(result.hasErrors()) {
-			ArrayList<String> errorsList;
-			errorsList = new ArrayList<String>();
+			ArrayList<String> errorsList = new ArrayList<String>();
 			for(FieldError error : 
 				result.getFieldErrors()) {
-				errorsList.add(error.getObjectName() + ": "
-						+ error.getField() + ": "
-						+ error.getDefaultMessage());
+				errorsList.add(error.getObjectName() + ": " + error.getField() 
+					+ ": " + error.getDefaultMessage());
 			}
 			model.addAttribute("errorsList", errorsList);
-			model.addAttribute("title", 
-					"Wystąpiły następujące błędy!!!");
+			model.addAttribute("title", "Wystąpiły następujące błędy!!!");
 			return "error";
 		}
-		model.addAttribute("title", 
-				"Nowe zwierze zostało dodane pomyślnie!");
+		model.addAttribute("title", "Nowe zwierze zostało dodane pomyślnie!");
 		model.addAttribute("name", animal.getName());
 		model.addAttribute("sound", animal.getSound());
 		model.addAttribute("id", animal.getId());
