@@ -1,14 +1,10 @@
 package me.daniel.models;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Food {
@@ -33,7 +29,8 @@ public class Food {
 	private int foodPoints;
 	
 	@NotNull
-	private Date useByDate;
+	@Pattern(regexp = "([1-9]|[12][0-9]|3[01])\\/([1-9]|1[0-2])\\/\\d{4}")
+	private String useByDate;
 	
 	
 	public Food() { }
@@ -52,35 +49,7 @@ public class Food {
 	public String toString() {
 		return "Food [id=" + id + ", name=" + name + ", brandName=" + brandName 
 				+ ", price=" + price + ", foodPoints=" + foodPoints 
-				+ ", useByDate=" + getUseByDate() + "]";
-	}
-	
-	/*
-	 * Date handling 
-	 */
-	
-	public void setUseByDate(String useByDate) {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		try {
-			this.useByDate = format.parse(useByDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public String getUseByDate() {
-		Calendar calendar = Calendar.getInstance();
-		String useByDate = "01/01/1970"; // Set default date
-		if(this.useByDate != null) {
-			calendar.setTime(this.useByDate);
-			int day = calendar.get(Calendar.DAY_OF_MONTH);
-			int month = calendar.get(Calendar.MONTH) + 1;
-			int year = calendar.get(Calendar.YEAR);
-			useByDate = (day < 10 ? "0" + day : day) + "/" 
-				+ (month < 10 ? "0" + month : month) + "/" 
-				+ year;
-		}
-		return useByDate;
+				+ ", useByDate=" + useByDate + "]";
 	}
 	
 	/*
@@ -125,5 +94,13 @@ public class Food {
 
 	public void setFoodPoints(int foodPoints) {
 		this.foodPoints = foodPoints;
+	}
+	
+	public String getUseByDate() {
+		return useByDate;
+	}
+	
+	public void setUseByDate(String useByDate) {
+		this.useByDate = useByDate;
 	}
 }
