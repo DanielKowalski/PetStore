@@ -21,11 +21,9 @@ public class Animal {
 	private ArrayList<Food> likedFoods;
 	private ArrayList<Food> unlikedFoods;
 	
-	
 	public Animal() {
 		initFoodsLists();
 	}
-	
 	
 	@Override
 	public String toString() {

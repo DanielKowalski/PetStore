@@ -33,7 +33,6 @@ public class Food {
 		message = "Give date in format dd/MM/yyyy")
 	private String useByDate;
 	
-	
 	public Food() { }
 	
 	public Food(long id, String name, String brandName, float price, 
