@@ -1,5 +1,8 @@
 package me.daniel.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.validation.constraints.Digits;
@@ -33,10 +36,10 @@ public class Food {
 	private Date useByDate;
 	
 	
-	public Food() {}
+	public Food() { }
 	
 	public Food(long id, String name, String brandName, float price, 
-			int foodPoints, Date useByDate) {
+			int foodPoints, String useByDate) {
 		setId(id);
 		setName(name);
 		setBrandName(brandName);
@@ -50,6 +53,34 @@ public class Food {
 		return "Food [id=" + id + ", name=" + name + ", brandName=" + brandName 
 				+ ", price=" + price + ", foodPoints=" + foodPoints 
 				+ ", useByDate=" + useByDate + "]";
+	}
+	
+	/*
+	 * Date handling 
+	 */
+	
+	public void setUseByDate(String useByDate) {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			this.useByDate = format.parse(useByDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String getUseByDate() {
+		Calendar calendar = Calendar.getInstance();
+		String useByDate = "01/01/1970"; // Set default date
+		if(this.useByDate != null) {
+			calendar.setTime(this.useByDate);
+			int day = calendar.get(Calendar.DAY_OF_MONTH);
+			int month = calendar.get(Calendar.MONTH) + 1;
+			int year = calendar.get(Calendar.YEAR);
+			useByDate = (day < 10 ? "0" + day : day) + "/" 
+				+ (month < 10 ? "0" + month : month) + "/" 
+				+ year;
+		}
+		return useByDate;
 	}
 	
 	/*
@@ -94,13 +125,5 @@ public class Food {
 
 	public void setFoodPoints(int foodPoints) {
 		this.foodPoints = foodPoints;
-	}
-
-	public Date getUseByDate() {
-		return useByDate;
-	}
-
-	public void setUseByDate(Date useByDate) {
-		this.useByDate = useByDate;
 	}
 }
