@@ -29,7 +29,8 @@ public class Food {
 	private int foodPoints;
 	
 	@NotNull
-	@Pattern(regexp = "([1-9]|[12][0-9]|3[01])\\/([1-9]|1[0-2])\\/\\d{4}")
+	@Pattern(regexp = "([1-9]|[12][0-9]|3[01])\\/([1-9]|1[0-2])\\/\\d{4}", 
+		message = "Give date in format dd/MM/yyyy")
 	private String useByDate;
 	
 	
