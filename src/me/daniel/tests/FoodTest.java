@@ -29,4 +29,12 @@ public class FoodTest {
 		assertEquals(1, bone.getFoodPoints());
 		assertEquals("18/02/2019", bone.getUseByDate());
 	}
+	
+	@Test
+	void testFoodToString() {
+		Food meat = new Food(1, "mięsko", "Animex", 5.43f, 4, "12/2/2020");
+		
+		assertEquals("Food [id=1, name=mięsko, brandName=Animex, price=5.43, "
+				+ "foodPoints=4, useByDate=12/02/2020]", meat.toString());
+	}
 }

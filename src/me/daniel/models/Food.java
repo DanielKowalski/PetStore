@@ -52,7 +52,7 @@ public class Food {
 	public String toString() {
 		return "Food [id=" + id + ", name=" + name + ", brandName=" + brandName 
 				+ ", price=" + price + ", foodPoints=" + foodPoints 
-				+ ", useByDate=" + useByDate + "]";
+				+ ", useByDate=" + getUseByDate() + "]";
 	}
 	
 	/*
