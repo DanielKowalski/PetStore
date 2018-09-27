@@ -54,7 +54,7 @@ public class FoodDAOImpl implements FoodDAO {
 				if (resultSet.next()) {
 					Food food = new Food();
 					
-					food.setId(resultSet.getLong("id"));
+					food.setId(resultSet.getInt("id"));
 					food.setName(resultSet.getString("name"));
 					food.setBrandName(resultSet.getString("brandName"));
 					food.setPrice(resultSet.getFloat("price"));
@@ -79,7 +79,7 @@ public class FoodDAOImpl implements FoodDAO {
 				SQLException {
 				Food food = new Food();
 				
-				food.setId(resultSet.getLong("id"));
+				food.setId(resultSet.getInt("id"));
 				food.setName(resultSet.getString("name"));
 				food.setBrandName(resultSet.getString("brandName"));
 				food.setPrice(resultSet.getFloat("price"));

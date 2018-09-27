@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 public class Food {
 
 	@NotNull
-	private long id;
+	private int id;
 	
 	@NotNull
 	@Size(min = 5, max = 32)
@@ -35,7 +35,7 @@ public class Food {
 	
 	public Food() { }
 	
-	public Food(long id, String name, String brandName, float price, 
+	public Food(int id, String name, String brandName, float price, 
 			int foodPoints, String useByDate) {
 		setId(id);
 		setName(name);
@@ -56,11 +56,11 @@ public class Food {
 	 * Getters and setters
 	 */
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
