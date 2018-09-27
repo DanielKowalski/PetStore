@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
 import me.daniel.models.Food;
+import me.daniel.models.NullFood;
 
 @ComponentScan("me.daniel")
 public class FoodDAOImpl implements FoodDAO {
@@ -61,7 +62,7 @@ public class FoodDAOImpl implements FoodDAO {
 					return food;
 				}
 				
-				return null;
+				return new NullFood();
 			}
 			
 		});
