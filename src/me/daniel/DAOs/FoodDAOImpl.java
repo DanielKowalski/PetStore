@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 
 import me.daniel.models.Food;
 import me.daniel.models.NullFood;
@@ -49,9 +50,10 @@ public class FoodDAOImpl implements FoodDAO {
 
 			@Override
 			public Food extractData(ResultSet resultSet) throws SQLException, 
-					DataAccessException {
+				DataAccessException {
 				if (resultSet.next()) {
 					Food food = new Food();
+					
 					food.setId(resultSet.getLong("id"));
 					food.setName(resultSet.getString("name"));
 					food.setBrandName(resultSet.getString("brandName"));
@@ -64,12 +66,28 @@ public class FoodDAOImpl implements FoodDAO {
 				
 				return new NullFood();
 			}
-			
 		});
 	}
 
 	@Override
 	public List<Food> list() {
-		return null;
+		String sqlStatement = "SELECT * FROM food";
+		return jdbcTemplate.query(sqlStatement, new RowMapper<Food>() {
+
+			@Override
+			public Food mapRow(ResultSet resultSet, int rowNumber) throws 
+				SQLException {
+				Food food = new Food();
+				
+				food.setId(resultSet.getLong("id"));
+				food.setName(resultSet.getString("name"));
+				food.setBrandName(resultSet.getString("brandName"));
+				food.setPrice(resultSet.getFloat("price"));
+				food.setFoodPoints(resultSet.getInt("foodPoints"));
+				food.setUseByDate(resultSet.getString("useByDate"));
+				
+				return food;
+			}
+		});
 	}
 }
